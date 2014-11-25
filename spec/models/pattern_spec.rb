@@ -13,6 +13,7 @@ RSpec.describe Pattern, :type => :model do
 
   it "cannot have a repeat name" do
     repeat_pattern = pattern.dup
+    repeat_pattern.name = repeat_pattern.name.upcase
     repeat_pattern.save
     expect(pattern).to_not be_valid
   end

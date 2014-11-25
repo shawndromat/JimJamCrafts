@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'angularjs-rails-resource', '~> 1.1.1'
 
 gem 'spring',        group: :development
 
@@ -23,6 +24,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
   gem 'jasmine-core', '1.3.1'
   gem 'jasmine-headless-webkit'
