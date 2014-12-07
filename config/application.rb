@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+
 
 require 'rails/all'
 
@@ -20,5 +20,6 @@ module JimJamCrafts
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     #
+    config.assets.paths << "#{Rails.root}/app/assets/templates"
   end
 end

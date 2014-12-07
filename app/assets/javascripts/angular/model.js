@@ -23,7 +23,19 @@ jimjam.factory('Model', ['$http', function($http) {
     }
 
     factory.prototype.create = function() {
-      var promise = $http.post(factory.url, this);
+    }
+
+    factory.prototype.save = function() {
+      var promise;
+      if (this.id) {
+        promise = $http.patch(url, this);
+      } else {
+        promise = $http.post(url, this);
+      }
+
+      return promise.then(function(response) {
+        _.extend(this, response.data)
+      }.bind(this))
     }
 
     return factory;
