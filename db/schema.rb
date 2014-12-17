@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121230431) do
+ActiveRecord::Schema.define(version: 20141211180226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "pattern_files", force: true do |t|
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+    t.string   "name",                 null: false
+    t.integer  "pattern_id",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "patterns", force: true do |t|
     t.string   "name",       null: false

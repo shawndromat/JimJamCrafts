@@ -1,0 +1,8 @@
+<form action="<%= pattern_files_url %>" method="post" enctype="multipart/form-data">
+  <%= auth_token %>
+  <input type="hidden" name="pattern_file[pattern_id]" value="<%= pattern.id %>"/>
+  <label for="pattern_file_name">File Name</label>
+  <input type="text" name="pattern_file[name]" id="pattern_file_name"/>
+  <input type="file" name="pattern_file[content]"/>
+  <input type="submit" value="Upload" />
+</form>

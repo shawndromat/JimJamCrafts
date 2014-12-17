@@ -20,6 +20,28 @@ module JimJamCrafts
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     #
+    config.filepicker_rails.api_key = "ASBXYkhJSOmQWzNbOfSl7z"
+
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_protocol => 'http',
+      :url =>':s3_domain_url',
+      :path => ":class/:id.:extension",
+      :s3_host_name => 's3-us-west-2.amazonaws.com',
+      
+      # :s3_credentials => {
+      #   :bucket => ENV['AWS_BUCKET'], #these values safely stored in application.yml thanks to figaro!
+      #   :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      #   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      # }
+
+      :s3_credentials => {
+        :bucket => Rails.application.secrets.aws_bucket, #these values safely stored in application.yml thanks to figaro!
+        :access_key_id => Rails.application.secrets.access_key_id,
+        :secret_access_key => Rails.application.secrets.secret_access_key
+      }
+    }
+
     config.assets.paths << "#{Rails.root}/app/assets/templates"
   end
 end

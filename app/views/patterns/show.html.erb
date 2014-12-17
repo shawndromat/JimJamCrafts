@@ -1,0 +1,5 @@
+<h3><%= @pattern.name %></h3>
+
+<%= render partial: "pattern_files/form", locals: {pattern: @pattern} %>
+
+<%= render @pattern.files %>

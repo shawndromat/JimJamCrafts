@@ -1,5 +1,11 @@
-<h2>All Patterns</h2>
-<pattern-form pattern="pattern" patterns="patterns"></pattern-form>
-<ul ng-repeat="pattern in patterns">
-  <li>{{ pattern.name }} <a target="_blank" href="{{pattern.etsy_url}}">Etsy</a></li>
-</ul>
+<div class="container">
+   <h2>All Patterns</h2>
+  <pattern-form pattern="pattern" patterns="patterns"></pattern-form>
+  <ul ng-repeat="pattern in patterns">
+    <li>
+      <h4>{{ pattern.name }} <a target="_blank" href="{{pattern.etsy_url}}">Etsy</a></h4>
+      <file-upload pattern="pattern"></file-upload>
+    </li>
+  </ul> 
+</div>
+

@@ -10,6 +10,11 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'angularjs-rails-resource', '~> 1.1.1'
+gem 'devise'
+gem "paperclip"
+gem "aws-sdk"
+gem 'figaro'
+gem 'filepicker-rails'
 
 gem 'spring',        group: :development
 

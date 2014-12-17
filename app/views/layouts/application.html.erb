@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="jimjam">
+<html>
 <head>
   <title>JimJamCrafts</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+  <%= filepicker_js_include_tag %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 <div ng-view>
   <%= yield %>
 </div>
