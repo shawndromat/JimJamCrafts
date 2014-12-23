@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='jimjam'>
 <head>
   <title>JimJamCrafts</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -13,6 +13,8 @@
 <div ng-view>
   <%= yield %>
 </div>
-
+<script>
+    filepicker.setKey("ASBXYkhJSOmQWzNbOfSl7z");
+  </script>
 </body>
 </html>

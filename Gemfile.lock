@@ -41,6 +41,8 @@ GEM
     addressable (2.3.6)
     angularjs-rails-resource (1.1.1)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (4.0.2.1)
+      execjs
     aws-sdk (1.36.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -225,6 +227,7 @@ PLATFORMS
 
 DEPENDENCIES
   angularjs-rails-resource (~> 1.1.1)
+  autoprefixer-rails
   aws-sdk
   better_errors
   binding_of_caller

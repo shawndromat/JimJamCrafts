@@ -15,6 +15,7 @@ gem "paperclip"
 gem "aws-sdk"
 gem 'figaro'
 gem 'filepicker-rails'
+gem 'autoprefixer-rails'
 
 gem 'spring',        group: :development
 
@@ -28,7 +29,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
   gem 'jasmine-core', '1.3.1'

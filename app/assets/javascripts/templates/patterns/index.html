@@ -1,10 +1,15 @@
 <div class="container">
    <h2>All Patterns</h2>
   <pattern-form pattern="pattern" patterns="patterns"></pattern-form>
-  <ul ng-repeat="pattern in patterns">
-    <li>
-      <h4>{{ pattern.name }} <a target="_blank" href="{{pattern.etsy_url}}">Etsy</a></h4>
+  <ul>
+    <li ng-repeat="pattern in patterns">
+      <h3>{{ pattern.name }} <a target="_blank" href="{{pattern.etsy_url}}">Etsy</a></h3>
       <file-upload pattern="pattern"></file-upload>
+
+      <ul class="filelist">
+        <li ng-show="pattern.files" ng-repeat="file in pattern.files"><h4>{{file.name}}</h4> <p class="filename">{{file.filename}}</p> <button ng-click="downloadFile(file.filepicker_url)" class="btn-info btn"><span class="glyphicon glyphicon-download"></span></button></li>
+      </ul>
+
     </li>
   </ul> 
 </div>

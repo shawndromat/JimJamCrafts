@@ -6,9 +6,13 @@ jimjam.controller('PatternCtrl', ['$scope', 'Pattern', function($scope, Pattern)
     $scope.patterns = $scope.patterns.concat(patterns);
   });
 
-  $scope.submitFile = function() {
-    console.log("in pattern")
+  $scope.downloadFile = function(url) {
+   filepicker.exportFile(url, {mimetype:'application/pdf'},
+      function(Blob){
+       console.log(Blob.url);
+      }); 
   }
+
 }])
 
 jimjam.controller('PatternFormCtrl', ['$scope', 'Pattern', function($scope, Pattern) {

@@ -1,8 +1,21 @@
-<form action="<%= pattern_files_url %>" method="post" enctype="multipart/form-data">
-  <%= auth_token %>
-  <input type="hidden" name="pattern_file[pattern_id]" value="<%= pattern.id %>"/>
-  <label for="pattern_file_name">File Name</label>
-  <input type="text" name="pattern_file[name]" id="pattern_file_name"/>
-  <input type="file" name="pattern_file[content]"/>
-  <input type="submit" value="Upload" />
-</form>
+<!-- <form action="<%= pattern_files_url %>" method="post" enctype="multipart/form&#45;data"> -->
+<!--   <%= auth_token %> -->
+<!--   <input type="hidden" name="pattern_file[pattern_id]" value="<%= pattern.id %>"/> -->
+<!--   <label for="pattern_file_name">File Name</label> -->
+<!--   <input type="text" name="pattern_file[name]" id="pattern_file_name"/> -->
+<!--   <input type="file" name="pattern_file[content]"/> -->
+<!--   <input type="submit" value="Upload" /> -->
+<!-- </form> -->
+
+
+<%= form_for @pattern_file do |f| %>
+  <div>
+    <%= hidden_field(:pattern_file, :pattern_id, value: pattern.id) %>
+    <%= f.label :name, "File name:" %>
+    <%= f.text_field :name %>
+    <%= f.label :filepicker_url, "Choose a file:" %>
+    <%= f.filepicker_field :filepicker_url, onchange: 'onPhotoUpload(event)' %> <!-- User#filepicker_url is a regular string column -->
+  </div>
+
+  <%= f.submit %>
+<% end %>

@@ -16,5 +16,6 @@
 //= require angular
 //= require angular-route
 //= require main
+//= require app.routes.js
 //= require_tree ./angular
 //= require_tree .

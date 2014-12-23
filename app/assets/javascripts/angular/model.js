@@ -2,7 +2,7 @@ jimjam.factory('Model', ['$http', function($http) {
 
   return function(options) {
 
-    var url = options.url + "/"
+    var url = options.url;
 
     factory = function (attrs) {
       _.extend(this, attrs);

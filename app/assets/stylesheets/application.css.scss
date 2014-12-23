@@ -14,3 +14,15 @@
  *= require bootstrap
  *= require_self
  */
+
+.filelist {
+  list-style: none;
+}
+.filelist h4 {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.filename {
+  display: inline-block;
+}
