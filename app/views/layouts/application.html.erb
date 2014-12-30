@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='jimjam'>
+<html>
 <head>
   <title>JimJamCrafts</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -10,11 +10,10 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<div ng-view>
+
   <%= yield %>
-</div>
 <script>
-    filepicker.setKey("ASBXYkhJSOmQWzNbOfSl7z");
+  filepicker.setKey("<%= ENV["FILEPICKER_API_KEY"] %>");
   </script>
 </body>
 </html>

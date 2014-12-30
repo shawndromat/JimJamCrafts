@@ -20,7 +20,6 @@ jimjam.controller('PatternFormCtrl', ['$scope', 'Pattern', function($scope, Patt
     var pattern = $scope.pattern;
     pattern.save().then(function() {
       $scope.patterns.push(pattern);
-      console.log($scope.patterns)
     })
     $scope.pattern = new Pattern();
   };
