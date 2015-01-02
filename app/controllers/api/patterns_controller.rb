@@ -13,7 +13,7 @@ class Api::PatternsController < ApplicationController
   end
 
   def show
-    render json: pattern
+    render pattern
   end
 
   def update

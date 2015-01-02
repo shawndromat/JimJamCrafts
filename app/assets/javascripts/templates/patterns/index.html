@@ -7,7 +7,7 @@
       <file-upload pattern="pattern"></file-upload>
 
       <ul class="filelist">
-        <li ng-show="pattern.files" ng-repeat="file in pattern.files"><h4>{{file.name}}</h4> <p class="filename">{{file.filename}}</p> <button ng-click="downloadFile(file.filepicker_url)" class="btn-info btn"><span class="glyphicon glyphicon-download"></span></button></li>
+        <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files"><h4>{{file.name}}</h4> <p class="filename">{{file.filename}}</p> <button ng-click="downloadFile(file.filepicker_url)" class="btn-info btn"><span class="glyphicon glyphicon-download"></span></button></li>
       </ul>
 
     </li>

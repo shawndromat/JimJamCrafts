@@ -1,4 +1,5 @@
-jimjam.controller('FileUploadCtrl', ['$scope', 'PatternFile', function($scope, PatternFile) {
+angular.module('PatternFiles.controllers', ['PatternFiles.models'])
+.controller('FileUploadCtrl', ['$scope', 'PatternFile', function($scope, PatternFile) {
   $scope.file = new PatternFile({pattern_id: $scope.pattern.id});
 
   $scope.submitFile = function() {

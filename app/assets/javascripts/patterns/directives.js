@@ -1,8 +1,9 @@
-jimjam.directive('patternForm', function() {
+angular.module('Patterns.directives', [])
+.directive('patternForm', function() {
   return {
     controller: 'PatternFormCtrl',
     restrict: 'E',
     scope: { pattern: '=', patterns: '=' },
-    templateUrl: 'assets/templates/patterns/form.html'
+    templateUrl: '../assets/templates/patterns/form.html'
   }
 });

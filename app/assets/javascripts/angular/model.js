@@ -1,11 +1,13 @@
-jimjam.factory('Model', ['$http', function($http) {
+angular.module('Utils', [])
+.factory('Model', ['$http', function($http) {
 
   return function(options) {
 
-    var url = options.url;
+    var url = window.location.origin + options.url;
 
     factory = function (attrs) {
-      _.extend(this, attrs);
+      attrs = attrs || {};
+      _.extend(this, this.parse(attrs));
     }
 
     factory.getAll = function() {
@@ -18,11 +20,14 @@ jimjam.factory('Model', ['$http', function($http) {
 
     factory.get = function(id) {
       return $http.get(url + id).then(function(response) {
+        console.log(response)
         return new factory(response.data);
       });
     }
+    
 
-    factory.prototype.create = function() {
+    factory.prototype.parse = function(response) {
+      return response;
     }
 
     factory.prototype.save = function() {

@@ -15,7 +15,9 @@
 //= require lodash
 //= require angular
 //= require angular-route
-//= require main
-//= require app.routes.js
+//= require root/main
+//= require admin/main
+//= require_tree ./root
+//= require_tree ./admin
 //= require_tree ./angular
 //= require_tree .

@@ -1,4 +1,5 @@
-jimjam.controller('PatternCtrl', ['$scope', 'Pattern', function($scope, Pattern) {
+angular.module('Patterns.controllers', ['Patterns.models', 'PatternFiles.directives', 'Patterns.directives'])
+.controller('PatternAdminCtrl', ['$scope', 'Pattern', function($scope, Pattern) {
   $scope.pattern = new Pattern();
   $scope.patterns = [];
 
@@ -15,7 +16,7 @@ jimjam.controller('PatternCtrl', ['$scope', 'Pattern', function($scope, Pattern)
 
 }])
 
-jimjam.controller('PatternFormCtrl', ['$scope', 'Pattern', function($scope, Pattern) {
+.controller('PatternFormCtrl', ['$scope', 'Pattern', function($scope, Pattern) {
   $scope.submitPattern = function() {
     var pattern = $scope.pattern;
     pattern.save().then(function() {
