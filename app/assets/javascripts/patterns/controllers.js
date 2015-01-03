@@ -1,4 +1,4 @@
-angular.module('Patterns.controllers', ['Patterns.models', 'PatternFiles.directives', 'Patterns.directives'])
+angular.module('Patterns.controllers', ['Patterns.models', 'PatternFiles.directives', 'Patterns.directives', 'Downloads.directives'])
 .controller('PatternAdminCtrl', ['$scope', 'Pattern', function($scope, Pattern) {
   $scope.pattern = new Pattern();
   $scope.patterns = [];
@@ -10,10 +10,15 @@ angular.module('Patterns.controllers', ['Patterns.models', 'PatternFiles.directi
   $scope.downloadFile = function(url) {
    filepicker.exportFile(url, {mimetype:'application/pdf'},
       function(Blob){
-       console.log(Blob.url);
       }); 
   }
+}])
 
+.controller('PatternShowCtrl', ['$scope', '$routeParams', 'Pattern', function($scope, $routeParams, Pattern) {
+  $scope.pattern;
+  Pattern.get($routeParams.id).then(function(pattern) {
+    $scope.pattern = pattern;
+  })
 }])
 
 .controller('PatternFormCtrl', ['$scope', 'Pattern', function($scope, Pattern) {

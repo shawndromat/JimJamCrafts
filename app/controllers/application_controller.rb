@@ -41,4 +41,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    unless current_user.admin?
+      render json: @user,  status: :forbidden
+    end
+  end
 end

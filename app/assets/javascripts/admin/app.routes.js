@@ -13,8 +13,18 @@ jimjamAdmin.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .when('/patterns', {
       templateUrl: "../assets/templates/patterns/index.html",
-      controller: 'PatternAdminCtrl',
+      controller: "PatternAdminCtrl",
       // access: accessLevels.admin
+    })
+
+    // .when('/patterns/:id', {
+    //   templateUrl: "../assets/templates/patterns/show.html",
+    //   controller: "PatternShowCtrl"
+    // })
+
+    .when('/downloads', {
+      templateUrl: "../assets/templates/downloads/admin.html",
+      controller: 'DownloadAdminCtrl'
     })
 
     // .when('/register', {

@@ -1,6 +1,8 @@
 class Api::PatternsController < ApplicationController
+  before_action :require_admin
+
   def index
-    @patterns = Pattern.all
+    @patterns = Pattern.includes(:pattern_files).all
   end
 
   def create

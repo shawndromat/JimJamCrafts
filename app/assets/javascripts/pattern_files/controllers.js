@@ -5,7 +5,7 @@ angular.module('PatternFiles.controllers', ['PatternFiles.models'])
   $scope.submitFile = function() {
     var file = $scope.file;
     file.save().then(function() {
-      $scope.pattern.files.push(file);
+      $scope.pattern.pattern_files.push(file);
     })
     $scope.file = new PatternFile({pattern_id: $scope.pattern.id});
   }

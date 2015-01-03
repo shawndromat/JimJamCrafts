@@ -1,0 +1,9 @@
+<form ng-submit="generateCode()">
+  <label for="download_order_num">Order Number</label>
+  <input type="text" id="download_order_num" ng-model="downloadCode.order_number"/>
+  <button type="submit">Generate code</button>
+</form>
+
+<div ng-show="downloadCode.code">
+  {{downloadCode.code}}
+</div>

@@ -1,6 +1,18 @@
-<form >
-   <label for="download_code_code">Enter your download code:</label>
-  <input type="text" id="download_code_code"/>
-  <button type="submit">Go</button> 
+<h1 id="title">Jim Jam Crafts</h1>
+<form ng-submit="search()">
+  <!-- <label for="download_code_code">Enter your download code:</label> -->
+  <div class="form-group">
+    <input class="large-input col-sm-7 col-sm-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
+    <button type="submit" class="col-sm-1 large-submit">Go</button> 
+  </div>
 </form>
+
+<div ng-show="pattern">
+  <h3>{{pattern.name}}</h3>
+    <ul class="filelist">
+      <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files"><h4>{{file.name}}</h4> <p class="filename">{{file.filename}}</p> <button ng-click="downloadFile(file.filepicker_url)" class="btn-info btn"><span class="glyphicon glyphicon-download"></span></button></li>
+    </ul>
+
+
+</div>
 

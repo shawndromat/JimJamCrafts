@@ -13,5 +13,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :patterns, only: [:create, :show, :update, :destroy, :index]
     resources :pattern_files, only: [:create, :show, :update, :destroy, :index]
+    resources :download_codes, only: [:create, :show, :update, :destroy, :index] do
+      get 'search', on: :collection
+    end
   end
 end

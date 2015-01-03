@@ -10,6 +10,7 @@ angular.module('Patterns.models', ['Utils', 'PatternFiles.models'])
       })
       delete response.pattern_files;
     }
+    this.etsy_url = "http://www.etsy.com/listing/" + response.listing_id;
     return response;  
   }
 

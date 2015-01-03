@@ -14,6 +14,40 @@
  *= require bootstrap
  *= require_self
  */
+* {
+  // border: thin solid black;
+}
+
+#title {
+  font-family: 'Pacifico', cursive;
+  text-transform: lowercase;
+  text-align: center;
+  font-size: 5em;
+  margin-bottom: 30px;
+}
+
+form {
+  padding: 20px 0;
+}
+
+.large-input {
+  border: none;
+  border-bottom: 3px solid #666;
+  height: 50px;
+  opacity: .75;
+  background-color: #ddd;
+}
+
+.large-input:focus {
+  outline: none;
+  opacity: 1;
+}
+
+.large-submit {
+  background-color: #AAA;
+  border: none;
+  height: 50px;
+}
 
 .filelist {
   list-style: none;

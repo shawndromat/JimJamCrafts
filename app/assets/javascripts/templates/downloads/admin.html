@@ -1,0 +1,9 @@
+<form ng-submit="generateCode()">
+  <label for="order_number">Order Number</label>
+  <input type="text" id="order_number" ng-model="downloadCode.order_number"/>
+  <label for="pattern_id">Pattern</label>
+  <select id="pattern_id" ng-model="downloadCode.pattern_id">
+    <option value="{{pattern.id}}" ng-repeat="pattern in patterns">{{pattern.name}}</option>
+  </select>
+  <button type="submit">Generate code</button>
+</form>
