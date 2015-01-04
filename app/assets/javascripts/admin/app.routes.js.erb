@@ -12,7 +12,7 @@ jimjamAdmin.config(['$routeProvider', function ($routeProvider) {
 
   $routeProvider
     .when('/patterns', {
-      templateUrl: "../assets/templates/patterns/index.html",
+      templateUrl: "<%= asset_path("patterns/index.html") %>",
       controller: "PatternAdminCtrl",
       // access: accessLevels.admin
     })
@@ -23,7 +23,7 @@ jimjamAdmin.config(['$routeProvider', function ($routeProvider) {
     // })
 
     .when('/downloads', {
-      templateUrl: "../assets/templates/downloads/admin.html",
+      templateUrl: "<%= asset_path("downloads/admin.html") %>",
       controller: 'DownloadAdminCtrl'
     })
 
@@ -34,7 +34,7 @@ jimjamAdmin.config(['$routeProvider', function ($routeProvider) {
     // })
 
     .otherwise({
-      templateUrl: "../assets/templates/sessions/form.html",
+      templateUrl: "<%= asset_path("sessions/form.html") %>",
       controller: 'SessionCtrl',
       // access: accessLevels.anon
     }) 

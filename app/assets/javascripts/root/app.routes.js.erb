@@ -1,7 +1,7 @@
 jimjam.config(['$routeProvider', function ($routeProvider) {
   $routeProvider
     .otherwise({
-      templateUrl: "../assets/templates/downloads/home.html",
+      templateUrl: "<%= asset_path("downloads/home.html") %>",
       controller: 'DownloadHomeCtrl',
     })
 }])

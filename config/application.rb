@@ -42,6 +42,6 @@ module JimJamCrafts
       }
     }
 
-    config.assets.paths << "#{Rails.root}/app/assets/templates"
+    config.assets.paths << Rails.root.join("app", "assets", "templates")
   end
 end
