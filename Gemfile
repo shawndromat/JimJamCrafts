@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'filepicker-rails'
 gem 'autoprefixer-rails'
 gem 'httparty'
+gem 'newrelic_rpm'
 
 gem 'spring',        group: :development
 
@@ -42,3 +43,6 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
