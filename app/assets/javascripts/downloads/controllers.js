@@ -25,21 +25,25 @@ angular.module('Downloads.controllers', ['Downloads.models'])
 
 
     $scope.generateCode = function() {
-      console.log($scope.downloadCode)
-      $scope.downloadCode.save().then(function(code) {
+      var code = $scope.downloadCode;
+      $scope.downloadCode.save().then(function() {
         $scope.downloadCodes.push(code);
       })
+
+      $scope.downloadCode = new DownloadCode();
     }
     
   }])
 
   .controller('DownloadHomeCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
     $scope.code = '';
+    $scope.downloadCode;
 
     $scope.search = function() {
       DownloadCode.search($scope.code).then(function(response) {
         $scope.downloadCode = new DownloadCode(response.data);
         $scope.pattern = $scope.downloadCode.pattern;
+        $('#title').addClass('results');
       })
     }
     $scope.downloadFile = function(url) {

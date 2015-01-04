@@ -1,6 +1,6 @@
 class DownloadCode < ActiveRecord::Base
   validates :code, :pattern_id, presence: true
-  validates :code, :order_number, uniqueness: true
+  validates :code, uniqueness: true
   
   after_initialize :generate_code
 

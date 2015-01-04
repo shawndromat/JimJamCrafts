@@ -1,18 +1,32 @@
 <h1 id="title">Jim Jam Crafts</h1>
-<form ng-submit="search()">
+<form ng-submit="search()" class="clearfix">
   <!-- <label for="download_code_code">Enter your download code:</label> -->
   <div class="form-group">
-    <input class="large-input col-sm-7 col-sm-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
-    <button type="submit" class="col-sm-1 large-submit">Go</button> 
+    <input class="large-input col-sm-7 col-xs-8 col-xs-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
+    <button type="submit" class="col-sm-1 col-sm-offset-0 col-xs-8 col-xs-offset-2 large-submit">Go</button> 
   </div>
 </form>
 
-<div ng-show="pattern">
-  <h3>{{pattern.name}}</h3>
-    <ul class="filelist">
-      <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files"><h4>{{file.name}}</h4> <p class="filename">{{file.filename}}</p> <button ng-click="downloadFile(file.filepicker_url)" class="btn-info btn"><span class="glyphicon glyphicon-download"></span></button></li>
-    </ul>
+<div ng-show="pattern" class="col-sm-8 col-sm-offset-2 pattern-show">
+  <div class="row pattern-header">
+    <img class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4" src="{{pattern.image_url}}"/>
+    <div class="col-xs-12 col-sm-8">
+      <h2>{{pattern.name}}</h2>
+      <a ng-show="downloadCode.listing_id" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
+      <a ng-show="downloadCode.order_number" href="http://www.etsy.com/your/purchases/{{downloadCode.order_number}}" target="_blank">View receipt</a>
+    </div>
+  </div>
 
-
+  <ul class="filelist list-group">
+    <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files" class="list-group-item row">
+        <h4 class="col-md-7">{{file.name}}</h4> 
+        <span class="col-md-5 file-group row">
+          <p class="filename col-xs-10">{{file.filename}}</p>
+          <div class="col-xs-2">
+            <span class="btn-info btn glyphicon glyphicon-download"></span>
+          </div>
+        </span>
+    </li>
+  </ul>
 </div>
 

@@ -15,7 +15,38 @@
  *= require_self
  */
 * {
+  font-family: 'Lato', sans-serif;
   // border: thin solid black;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+h1, h2, h3 {
+  font-family: 'Lato', sans-serif;
+  // text-transform: lowercase;
+}
+
+// .full-image {
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-image: image-url("flossy_flossy.jpg");
+  background-size: cover;
+}
+
+.container {
+  background-color: rgba(255,255,255,.25);
+}
+
+.pattern-header {
+  margin-bottom: 20px;
 }
 
 #title {
@@ -24,17 +55,26 @@
   text-align: center;
   font-size: 5em;
   margin-bottom: 30px;
+  margin-top: 80px;
+  transition: margin-top .75s ease-in;
+  -ms-transition: margin-top .75s ease-in;
+  -webkit-transition: margin-top .75s ease-in;
+}
+
+#title.results {
+  margin-top: 20px;
 }
 
 form {
   padding: 20px 0;
+  margin-bottom: 50px;
 }
 
 .large-input {
   border: none;
   border-bottom: 3px solid #666;
   height: 50px;
-  opacity: .75;
+  opacity: .80;
   background-color: #ddd;
 }
 
@@ -49,16 +89,51 @@ form {
   height: 50px;
 }
 
-.filelist {
-  list-style: none;
-}
-.filelist h4 {
-  display: inline-block;
-  margin-right: 10px;
+.pattern-header {
+  text-align: center;
+  padding: 40px;
+  a {
+    display: block;
+    padding: 5px;
+  }
 }
 
-.filename {
-  display: inline-block;
+.filelist {
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+
+.file-group {
+  line-height: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  p {
+    margin: 0;
+    display: inline-block;
+    width: 75%;
+    width: calc(80%-15px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: baseline;
+    left: 0;
+    transition: left .5s;
+    -webkit-transition: left .5s;
+    -ms-transition: left .5s;
+  }
+
+  p:hover {
+    overflow: visible;
+    left: -10%;
+  }
+
+  button {
+    width: 15%;
+    width: calc(20%-15px);
+    vertical-align: baseline;
+  }
 }
 
 .full-page-form {

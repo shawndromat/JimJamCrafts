@@ -6,4 +6,22 @@
     <option value="{{pattern.id}}" ng-repeat="pattern in patterns">{{pattern.name}}</option>
   </select>
   <button type="submit">Generate code</button>
-</form>
+  </form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Order number</th>
+      <th>Pattern</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="download in downloadCodes">
+      <td>{{download.order_number}}</td>
+      <td>{{download.pattern.name}}</td>
+      <td>{{download.code}}</td>
+    </tr>
+  </tbody>
+</table>
+

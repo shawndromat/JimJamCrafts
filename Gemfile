@@ -16,6 +16,7 @@ gem "aws-sdk"
 gem 'figaro'
 gem 'filepicker-rails'
 gem 'autoprefixer-rails'
+gem 'httparty'
 
 gem 'spring',        group: :development
 

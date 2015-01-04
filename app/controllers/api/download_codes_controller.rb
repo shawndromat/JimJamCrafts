@@ -2,7 +2,7 @@ class Api::DownloadCodesController < ApplicationController
   before_action :require_admin, except: [:show]
 
   def index
-    @download_codes = DownloadCode.all
+    @download_codes = DownloadCode.includes(:pattern).all
   end
 
   def create
