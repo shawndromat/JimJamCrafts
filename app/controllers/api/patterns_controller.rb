@@ -34,7 +34,7 @@ class Api::PatternsController < ApplicationController
   private
 
   def pattern_params
-    params.require(:pattern).permit(:name, :etsy_url)
+    params.require(:pattern).permit(:name, :listing_id)
   end
 
   def pattern

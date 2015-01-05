@@ -236,6 +236,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   angularjs-rails-resource (~> 1.1.1)
   autoprefixer-rails
   aws-sdk

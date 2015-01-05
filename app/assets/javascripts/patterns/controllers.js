@@ -24,6 +24,7 @@ angular.module('Patterns.controllers', ['Patterns.models', 'PatternFiles.directi
 .controller('PatternFormCtrl', ['$scope', 'Pattern', function($scope, Pattern) {
   $scope.submitPattern = function() {
     var pattern = $scope.pattern;
+    console.log(pattern);
     pattern.save().then(function() {
       $scope.patterns.push(pattern);
     })

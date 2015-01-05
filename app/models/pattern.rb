@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 class Pattern < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :listing_id, :image_url, presence: true
@@ -6,6 +8,7 @@ class Pattern < ActiveRecord::Base
   has_many :download_codes
 
   before_validation :fetch_image_url
+
 
   private
   def fetch_image_url
@@ -17,6 +20,6 @@ class Pattern < ActiveRecord::Base
     })
     
     results = HTTParty.get(images_url.to_s).parsed_response["results"]
-    self.image_url = results.first["url_170x135"]
+    self.image_url = results ? results.first["url_170x135"] : ""
   end
 end
