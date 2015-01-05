@@ -5,6 +5,6 @@ angular.module('Downloads.directives', [])
       controller: 'DownloadCodeFormCtrl',
       restrict: 'E',
       scope: { pattern: '=' },
-      templateUrl: '../assets/templates/downloads/form.html'
+      templateUrl: "<%= asset_path('downloads/form.html') %>"
     }
   })

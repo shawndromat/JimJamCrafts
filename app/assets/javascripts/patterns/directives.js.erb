@@ -4,6 +4,6 @@ angular.module('Patterns.directives', [])
     controller: 'PatternFormCtrl',
     restrict: 'E',
     scope: { pattern: '=', patterns: '=' },
-    templateUrl: '../assets/templates/patterns/form.html'
+templateUrl: "<%= asset_path('patterns/form.html') %>"
   }
 });

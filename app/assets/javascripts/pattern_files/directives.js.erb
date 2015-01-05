@@ -4,7 +4,7 @@ angular.module('PatternFiles.directives', ['PatternFiles.controllers'])
     controller: 'FileUploadCtrl',
     restrict: 'E',
     scope: { pattern: '='},
-    templateUrl: '../assets/templates/pattern_files/form.html',
+    templateUrl: "<%= asset_path('pattern_files/form.html') %>",
     link: function(scope, element, attrs) {
       
       // var filepickerInit = function() {
