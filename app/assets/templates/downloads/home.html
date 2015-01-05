@@ -24,13 +24,16 @@
 
   <ul class="filelist list-group">
     <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files" class="list-group-item row">
-        <h4 class="col-md-7">{{file.name}}</h4> 
-        <span class="col-md-5 file-group row">
-          <p class="filename col-xs-10">{{file.filename}}</p>
-          <div class="col-xs-2" ng-click="downloadFile(file.filepicker_url)">
-            <span class="btn-info btn glyphicon glyphicon-download"></span>
+        <h4 class="col-md-5">{{file.name}}</h4> 
+        <div class="col-md-7 file-group">
+          <div class="row">
+            <p class="filename col-xs-12 col-sm-8">{{file.filename}}</p>
+            <button class="col-xs-6 col-xs-offset-3 col-sm-offset-0 col-sm-4 btn-info btn" ng-click="downloadFile(file.filepicker_url)">
+              Download
+              <span class="glyphicon glyphicon-download"></span>
+            </button>
           </div>
-        </span>
+        </div>
     </li>
   </ul>
 </div>

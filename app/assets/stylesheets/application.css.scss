@@ -118,31 +118,33 @@ form {
   line-height: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: right;
 
   p {
-    margin: 0;
-    display: inline-block;
-    width: 75%;
-    width: calc(80%-15px);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     vertical-align: baseline;
     left: 0;
-    transition: left .5s;
-    -webkit-transition: left .5s;
-    -ms-transition: left .5s;
+    transition: right .5s;
+    -webkit-transition: right .5s;
+    -ms-transition: right .5s;
   }
 
-  p:hover {
-    overflow: visible;
-    left: -10%;
-  }
+  // p:hover {
+  //   overflow: visible;
+  //   left: -10%;
+  // }
 
-  button {
-    width: 15%;
-    width: calc(20%-15px);
-    vertical-align: baseline;
+  // button {
+  //   width: 15%;
+  //   width: calc(20%-15px);
+  //   vertical-align: baseline;
+  // }
+
+  span.glyphicon {
+    vertical-align: center;
+    font-size: 1.25em;
   }
 }
 
