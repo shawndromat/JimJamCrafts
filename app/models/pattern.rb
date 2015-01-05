@@ -18,7 +18,6 @@ class Pattern < ActiveRecord::Base
       path: "v2/listings/#{listing_id}/images",
       query: "api_key=#{ENV['ETSY_API_KEY']}"
     })
-    
     results = HTTParty.get(images_url.to_s).parsed_response["results"]
     self.image_url = results ? results.first["url_170x135"] : ""
   end
