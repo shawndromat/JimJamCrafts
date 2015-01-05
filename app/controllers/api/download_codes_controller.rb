@@ -1,5 +1,5 @@
 class Api::DownloadCodesController < ApplicationController
-  before_action :require_admin, except: [:show]
+  before_action :require_admin, except: [:show, :search]
 
   def index
     @download_codes = DownloadCode.includes(:pattern).all
