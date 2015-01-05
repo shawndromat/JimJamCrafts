@@ -12,6 +12,7 @@ class Pattern < ActiveRecord::Base
 
   private
   def fetch_image_url
+    return if self.image_url
     images_url = Addressable::URI.new({
       scheme: "https",
       host: "openapi.etsy.com",
