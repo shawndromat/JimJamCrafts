@@ -4,6 +4,7 @@
   <label for="pattern_id">Pattern</label>
   <select id="pattern_id" ng-model="downloadCode.pattern_id">
     <option value="{{pattern.id}}" ng-repeat="pattern in patterns">{{pattern.name}}</option>
+    <input type="hidden" ng-model="downloadCode.pattern" value="pattern" />
   </select>
   <button type="submit">Generate code</button>
   </form>
