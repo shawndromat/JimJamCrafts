@@ -27,7 +27,7 @@
         <h4 class="col-md-7">{{file.name}}</h4> 
         <span class="col-md-5 file-group row">
           <p class="filename col-xs-10">{{file.filename}}</p>
-          <div class="col-xs-2">
+          <div class="col-xs-2" ng-click="downloadFile(file.filepicker_url)">
             <span class="btn-info btn glyphicon glyphicon-download"></span>
           </div>
         </span>

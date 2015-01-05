@@ -50,6 +50,7 @@ angular.module('Downloads.controllers', ['Downloads.models'])
         $scope.errorMessage = response.data;
       })
     }
+
     $scope.downloadFile = function(url) {
       filepicker.exportFile(url, {mimetype:'application/pdf'},
         function(Blob){}); 
