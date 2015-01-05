@@ -44,6 +44,10 @@ angular.module('Downloads.controllers', ['Downloads.models'])
         $scope.downloadCode = new DownloadCode(response.data);
         $scope.pattern = $scope.downloadCode.pattern;
         $('#title').addClass('results');
+        $scope.errorMessage = undefined;
+      },
+      function(response) {
+        $scope.errorMessage = response.data;
       })
     }
     $scope.downloadFile = function(url) {

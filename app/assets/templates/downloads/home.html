@@ -1,10 +1,15 @@
 <h1 id="title">Jim Jam Crafts</h1>
 <form ng-submit="search()" class="clearfix">
   <!-- <label for="download_code_code">Enter your download code:</label> -->
-  <div class="form-group">
+  <div class="form-group clearfix">
     <input class="large-input col-sm-7 col-xs-8 col-xs-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
     <button type="submit" class="col-sm-1 col-sm-offset-0 col-xs-8 col-xs-offset-2 large-submit">Go</button> 
   </div>
+<div class="form-group">
+  <div class="alert alert-danger col-xs-8 col-xs-offset-2" role="alert" ng-show="errorMessage">
+    <p><strong>Oops!</strong>I'm having a hard time recognizing that code. Please try again.</p>
+  </div>
+</div>
 </form>
 
 <div ng-show="pattern" class="col-sm-8 col-sm-offset-2 pattern-show">
@@ -12,7 +17,7 @@
     <img class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4" src="{{pattern.image_url}}"/>
     <div class="col-xs-12 col-sm-8">
       <h2>{{pattern.name}}</h2>
-      <a ng-show="downloadCode.listing_id" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
+      <a ng-show="pattern.listing_id" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
       <a ng-show="downloadCode.order_number" href="http://www.etsy.com/your/purchases/{{downloadCode.order_number}}" target="_blank">View receipt</a>
     </div>
   </div>

@@ -28,7 +28,11 @@ class Api::DownloadCodesController < ApplicationController
 
   def search
     @download_code = DownloadCode.find_by(code: params[:code])
-    render @download_code
+    if @download_code
+      render @download_code
+    else
+      render text: "Code not found", status: 404
+    end
   end
 
   def show
