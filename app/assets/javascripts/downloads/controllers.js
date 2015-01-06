@@ -26,6 +26,10 @@ angular.module('Downloads.controllers', ['Downloads.models'])
 
     $scope.generateCode = function() {
       var code = $scope.downloadCode;
+      code.pattern = _.find($scope.patterns, function(patt) {
+        return patt.id === Number(code.pattern_id);
+      });
+
       $scope.downloadCode.save().then(function() {
         $scope.downloadCodes.push(code);
       })
