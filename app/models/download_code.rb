@@ -9,7 +9,7 @@ class DownloadCode < ActiveRecord::Base
   def self.unique_code
     code = nil
     loop do
-      code = SecureRandom::urlsafe_base64
+      code = SecureRandom::urlsafe_base64(8)
       break unless DownloadCode.exists?(code: code)
     end
 
