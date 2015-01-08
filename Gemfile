@@ -29,6 +29,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
@@ -36,11 +38,9 @@ group :test do
   gem 'jasmine', github: 'pivotal/jasmine-gem', ref: 'e810540'
   gem 'jasmine-core', '1.3.1'
   gem 'jasmine-headless-webkit'
-  gem 'factory_girl_rails'
   gem 'poltergeist'
   gem 'capybara'
   gem 'launchy'
-  gem 'faker'
   gem 'database_cleaner'
 end
 

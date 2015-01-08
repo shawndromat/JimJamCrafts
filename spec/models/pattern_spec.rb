@@ -1,9 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Pattern, :type => :model do
+  let(:content) { create(:etsy_pattern) }
+  subject(:pattern) do 
+    Pattern.new(
+      name: "Totoro",
+      content: content
+    )
+  end
   
-  subject(:pattern) { Pattern.new(name: "Totoro") }
-
   it "is invalid without a name" do
     expect(pattern).to be_valid
 
@@ -17,4 +22,6 @@ RSpec.describe Pattern, :type => :model do
     repeat_pattern.save
     expect(pattern).to_not be_valid
   end
+
+  it { should belong_to(:content) }
 end
