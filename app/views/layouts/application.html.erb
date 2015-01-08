@@ -12,9 +12,16 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<div class="container">
+<div class="container content">
   <%= yield %>
 </div>
+<footer>
+  <div class="container">
+    <p>
+      Questions, comments, concerns? Email <a href="mailto:jimjamcrafts@gmail.com">jimjamcrafts@gmail.com</a>
+    </p>
+</footer>
+  </div>
 <script>
   filepicker.setKey("<%= ENV["FILEPICKER_API_KEY"] %>");
   </script>
