@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :etsy_pattern do
-    listing_id { rand(1000) }
+    listing_id { rand(100000000..220000000)}
     image_url { "image#{listing_id}" }
   end
 end

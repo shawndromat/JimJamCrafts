@@ -5,14 +5,6 @@ class Api::PatternsController < ApplicationController
     @patterns = Pattern.includes(:pattern_files).all
   end
 
-  def create
-    @pattern = Pattern.new(pattern_params)
-    if @pattern.save
-      render json: @pattern
-    else
-      render json: @pattern.errors.full_messages
-    end
-  end
 
   def show
     render pattern
