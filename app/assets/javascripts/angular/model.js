@@ -3,7 +3,6 @@ angular.module('Utils', [])
 
   return function(options) {
     var url = window.location.origin + options.url;
-
     factory = function (attrs) {
       attrs = attrs || {};
       _.extend(this, this.parse(attrs));
@@ -14,8 +13,7 @@ angular.module('Utils', [])
     }
 
     factory.getAll = function() {
-      console.log(factory.url)
-      return $http.get(factory.url()).then(function(response) {
+      return $http.get(this.url()).then(function(response) {
         return _.map(response.data, function(data) {
           return new factory(data);
         })
@@ -23,7 +21,7 @@ angular.module('Utils', [])
     }
 
     factory.get = function(id) {
-      return $http.get(factory.url() + id).then(function(response) {
+      return $http.get(this.url() + '/' + id).then(function(response) {
         console.log(response)
         return new factory(response.data);
       });

@@ -7,6 +7,8 @@ class DownloadCode < ActiveRecord::Base
 
   belongs_to :pattern
 
+  default_scope { order(:created_at) }
+
   def self.unique_code
     code = nil
     loop do

@@ -1,4 +1,4 @@
-angular.module('Downloads.controllers', ['Downloads.models'])
+angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
   .controller('DownloadCodeFormCtrl', ['$scope', '$attrs', 'DownloadCode', function($scope, $attrs, DownloadCode) {
     $scope.downloadCode = new DownloadCode({
       pattern_id: $scope.pattern.id
@@ -6,7 +6,6 @@ angular.module('Downloads.controllers', ['Downloads.models'])
 
     $scope.generateCode = function() {
       $scope.downloadCode.save().then(function(code) {
-        debugger
       })
     }
     
@@ -19,6 +18,7 @@ angular.module('Downloads.controllers', ['Downloads.models'])
     Pattern.getAll().then(function(patterns) {
       $scope.patterns = $scope.patterns.concat(patterns);
     });
+
     DownloadCode.getAll().then(function(codes) {
       $scope.downloadCodes = $scope.downloadCodes.concat(codes);
     });

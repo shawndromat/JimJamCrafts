@@ -1,12 +1,11 @@
 angular.module('Downloads.models', ['Utils', 'Patterns.models'])
   .factory('DownloadCode', ['Model', '$http', 'Pattern', function (Model, $http, Pattern) {
-    var url = '/api/download_codes';
-    DownloadCode = Model({url: url});
+    DownloadCode = Model({url: '/api/download_codes'});
 
     DownloadCode.search = function(code) {
       return $http({
         method: 'GET',
-        url: url + "/search",
+        url: this.url() + "/search",
         params: {code: code}
       })
     }

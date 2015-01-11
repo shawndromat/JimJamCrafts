@@ -1,7 +1,6 @@
 angular.module('Patterns.models', ['Utils', 'PatternFiles.models'])
 .factory('Pattern', ['Model', '$http', 'PatternFile', function(Model, $http, PatternFile) {
-  var url = '/api/patterns/';
-  Pattern = Model({url: url});
+  Pattern = Model({url: '/api/patterns/'});
 
   Pattern.prototype.parse = function(response) {
     if (response.pattern_files) {
