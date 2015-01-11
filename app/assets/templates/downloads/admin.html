@@ -13,6 +13,7 @@
   <thead>
     <tr>
       <th>Order number</th>
+      <th>Status</th>
       <th>Pattern</th>
       <th>Code</th>
     </tr>
@@ -20,6 +21,7 @@
   <tbody>
     <tr ng-repeat="download in downloadCodes">
       <td>{{download.order_number}}</td>
+      <td>{{download.status}}</td>
       <td>{{download.pattern.name}}</td>
       <td>{{download.code}}</td>
     </tr>

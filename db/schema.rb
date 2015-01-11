@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105072856) do
+ActiveRecord::Schema.define(version: 20150111204707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "download_codes", force: true do |t|
-    t.string   "code",                   null: false
-    t.integer  "pattern_id",             null: false
+    t.string   "code",                                       null: false
+    t.integer  "pattern_id",                                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_number", limit: 8
+    t.string   "status",                 default: "PENDING", null: false
   end
 
   add_index "download_codes", ["code"], name: "index_download_codes_on_code", unique: true, using: :btree
+
+  create_table "etsy_patterns", force: true do |t|
+    t.integer "listing_id", limit: 8, null: false
+    t.string  "image_url",            null: false
+  end
 
   create_table "pattern_files", force: true do |t|
     t.string   "name",           null: false
@@ -36,13 +42,14 @@ ActiveRecord::Schema.define(version: 20150105072856) do
   end
 
   create_table "patterns", force: true do |t|
-    t.string   "name",                 null: false
+    t.string   "name",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "listing_id", limit: 8, null: false
-    t.string   "image_url",            null: false
+    t.integer  "content_id",   null: false
+    t.string   "content_type", null: false
   end
 
+  add_index "patterns", ["content_id", "content_type"], name: "index_patterns_on_content_id_and_content_type", using: :btree
   add_index "patterns", ["name"], name: "index_patterns_on_name", unique: true, using: :btree
 
   create_table "users", force: true do |t|

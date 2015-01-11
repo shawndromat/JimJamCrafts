@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :download_codes, only: [:create, :show, :update, :destroy, :index] do
       get 'search', on: :collection
     end
+    resources :etsy_patterns, only: [:create, :update]
   end
 end

@@ -2,7 +2,6 @@ angular.module('Utils', [])
 .factory('Model', ['$http', function($http) {
 
   return function(options) {
-
     var url = window.location.origin + options.url;
 
     factory = function (attrs) {
@@ -10,8 +9,13 @@ angular.module('Utils', [])
       _.extend(this, this.parse(attrs));
     }
 
+    factory.url = function() {
+      return url;
+    }
+
     factory.getAll = function() {
-      return $http.get(url).then(function(response) {
+      console.log(factory.url)
+      return $http.get(factory.url()).then(function(response) {
         return _.map(response.data, function(data) {
           return new factory(data);
         })
@@ -19,7 +23,7 @@ angular.module('Utils', [])
     }
 
     factory.get = function(id) {
-      return $http.get(url + id).then(function(response) {
+      return $http.get(factory.url() + id).then(function(response) {
         console.log(response)
         return new factory(response.data);
       });
@@ -30,12 +34,20 @@ angular.module('Utils', [])
       return response;
     }
 
+    factory.prototype.url = function() {
+      if (this.id) {
+        return factory.url() + id;
+      } else {
+        return factory.url();
+      }
+    }
+
     factory.prototype.save = function() {
       var promise;
       if (this.id) {
-        promise = $http.patch(url, this);
+        promise = $http.patch(this.url(), this);
       } else {
-        promise = $http.post(url, this);
+        promise = $http.post(this.url(), this);
       }
 
       return promise.then(function(response) {

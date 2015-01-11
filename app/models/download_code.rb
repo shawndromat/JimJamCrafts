@@ -1,6 +1,7 @@
 class DownloadCode < ActiveRecord::Base
-  validates :code, :pattern_id, presence: true
+  validates :code, :pattern_id, :status, presence: true
   validates :code, uniqueness: true
+  validates :status, inclusion: %w(PENDING SENT DISABLED)
   
   after_initialize :generate_code
 
