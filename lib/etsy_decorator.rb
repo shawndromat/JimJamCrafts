@@ -1,24 +1,34 @@
-class EtsyDecorator
-  attr_reader :etsy_pattern, :path
+class EtsyDecorator < SimpleDelegator
+  attr_reader :etsy_content
 
-  def initialize(etsy_pattern, path)
-    @etsy_pattern = etsy_pattern
+  def initialize(etsy_content, path)
+    @etsy_content = etsy_content
     @path = path
+    super(etsy_content)
+  end
+
+  def path
+    @path.split('/').map do |segment|
+      if segment[0] == ":"
+        etsy_content.send(segment[1..-1].to_sym)
+      else
+        segment
+      end
+    end.join('/')
   end
 
   def save
-    etsy_pattern.save
-  end
-
-  def update_image_url
-    if results
-      etsy_pattern.image_url = results.first["url_170x135"]
-    else
-      etsy_pattern.image_url = "images/no_image.jpg"
-    end
+    update_image_url
+    super
   end
 
   private
+
+  def update_image_url
+    if etsy_content.listing_id_changed?
+      etsy_content.image_url = results.first["url_170x135"]
+    end
+  end
 
   def etsy_uri
     Addressable::URI.new({

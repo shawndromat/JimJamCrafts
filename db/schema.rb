@@ -11,22 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108192054) do
+ActiveRecord::Schema.define(version: 20150112223318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "download_codes", force: true do |t|
-    t.string   "code",                   null: false
-    t.integer  "pattern_id",             null: false
+    t.string   "code",                                       null: false
+    t.integer  "pattern_id",                                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_number", limit: 8
+    t.string   "status",                 default: "PENDING", null: false
   end
 
   add_index "download_codes", ["code"], name: "index_download_codes_on_code", unique: true, using: :btree
 
-  create_table "etsy_patterns", force: true do |t|
+  create_table "etsy_contents", force: true do |t|
     t.integer "listing_id", limit: 8, null: false
     t.string  "image_url",            null: false
   end
