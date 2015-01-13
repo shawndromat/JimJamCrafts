@@ -5,9 +5,9 @@ RSpec.describe PatternBuilder do
     { 
       pattern: {
         name: "My Pattern",
-        etsy_pattern: {
-          listing_id: 12345667
-        }
+      },
+      etsy_content: {
+        listing_id: "12345667"
       }
     }
   end

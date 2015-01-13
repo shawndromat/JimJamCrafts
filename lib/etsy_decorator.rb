@@ -1,10 +1,10 @@
-class EtsyDecorator < SimpleDelegator
+class EtsyDecorator
   attr_reader :etsy_content
 
-  def initialize(etsy_content, path)
+  def initialize(etsy_content)
     @etsy_content = etsy_content
-    @path = path
-    super(etsy_content)
+    @path = "v2/listings/:listing_id/images"
+    update_image_url
   end
 
   def path
@@ -17,10 +17,10 @@ class EtsyDecorator < SimpleDelegator
     end.join('/')
   end
 
-  def save
-    update_image_url
-    super
-  end
+  # def save
+  #   update_image_url
+  #   super
+  # end
 
   private
 
