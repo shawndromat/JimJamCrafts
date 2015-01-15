@@ -16,11 +16,19 @@ angular.module('Patterns.models', ['Utils', 'PatternFiles.models'])
     return response;  
   }
 
-  Pattern.prototype.url = function() {
+  Pattern.prototype.path = function() {
     if (this.listing_id) {
-      return window.location.origin + "/api/etsy_patterns";
+      return window.location.origin + "/api/etsy_patterns/";
     } else {
-      return window.location.origin + "/api/independent_patterns";
+      return window.location.origina + "/api/indie_patterns/";
+    }
+  }
+
+  Pattern.prototype.url = function() {
+    if (this.id) {
+      return this.path() + id;
+    } else {
+      return this.path();
     }
   }
 

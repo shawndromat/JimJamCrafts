@@ -1,5 +1,3 @@
-
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -20,27 +18,19 @@ module JimJamCrafts
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     #
+    
+    config.generators do |g| 
+      g.test_framework :rspec, 
+        :fixtures => true, 
+        :view_specs => false, 
+        :helper_specs => false, 
+        :routing_specs => false, 
+        :controller_specs => true, 
+        :request_specs => true 
+      g.fixture_replacement :factory_girl, :dir => "spec/factories" 
+    end
+
     config.filepicker_rails.api_key =  ENV["FILEPICKER_API_KEY"]
-
-    config.paperclip_defaults = {
-      :storage => :s3,
-      :s3_protocol => 'http',
-      :url =>':s3_domain_url',
-      :path => ":class/:id.:extension",
-      :s3_host_name => 's3-us-west-2.amazonaws.com',
-      
-      # :s3_credentials => {
-      #   :bucket => ENV['AWS_BUCKET'], #these values safely stored in application.yml thanks to figaro!
-      #   :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      #   :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-      # }
-
-      :s3_credentials => {
-        :bucket => Rails.application.secrets.aws_bucket, #these values safely stored in application.yml thanks to figaro!
-        :access_key_id => Rails.application.secrets.access_key_id,
-        :secret_access_key => Rails.application.secrets.secret_access_key
-      }
-    }
 
     config.assets.paths << Rails.root.join("app", "assets", "templates")
   end
