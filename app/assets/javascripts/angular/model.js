@@ -33,9 +33,9 @@ angular.module('Utils', [])
     factory.prototype.save = function() {
       var promise;
       if (this.id) {
-        promise = $http.patch(url, this);
+        promise = $http.patch(this.url(), this);
       } else {
-        promise = $http.post(url, this);
+        promise = $http.post(this.url(), this);
       }
 
       return promise.then(function(response) {

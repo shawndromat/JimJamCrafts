@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Pattern, :type => :model do
-  let(:content) { create(:etsy_pattern) }
+  let(:content) { create(:etsy_content) }
   subject(:pattern) do 
     Pattern.new(
       name: "Totoro",

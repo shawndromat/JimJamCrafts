@@ -1,11 +1,18 @@
+require 'addressable/uri'
+
 class EtsyDecorator
   attr_reader :etsy_content
 
   def initialize(etsy_content)
     @etsy_content = etsy_content
     @path = "v2/listings/:listing_id/images"
+  end
+
+  def decorate
     update_image_url
   end
+
+  private
 
   def path
     @path.split('/').map do |segment|
@@ -16,13 +23,6 @@ class EtsyDecorator
       end
     end.join('/')
   end
-
-  # def save
-  #   update_image_url
-  #   super
-  # end
-
-  private
 
   def update_image_url
     if etsy_content.listing_id_changed?

@@ -3,47 +3,34 @@ require 'etsy_decorator'
 
 RSpec.describe EtsyDecorator, :type => :model do
   let(:etsy_content) { build(:etsy_content) }
-  let(:path) { "v2/listings/:listing_id/images" }
+
   subject(:etsy_decorator) do 
-    EtsyDecorator.new(etsy_content, path)
+    EtsyDecorator.new(etsy_content)
   end
 
   it "takes in an etsy pattern correctly" do
     expect(etsy_decorator.etsy_content).to eq(etsy_content)
   end
 
-  it "inserts etsy pattern values in the path correctly" do
-    expected_path = "v2/listings/#{etsy_content.listing_id}/images"
-    expect(etsy_decorator.path).to eq(expected_path)
-  end
-  #
-  # describe "#update_image_url" do
-  #   before(:each) do
-  #     etsy_content.listing_id = 204367440
-  #     etsy_decorator.update_image_url
-  #   end
-  #
-  #   it "updates the etsy pattern's image url" do
-  #     expect(etsy_content.image_url).to_not be_nil
-  #   end
-  #
-  #   it "makes the etsy pattern valid" do
-  #     expect(etsy_content).to be_valid
-  #   end
-  # end
-  #
-  describe "#save" do
-    before(:each) { allow(etsy_content).to receive(:save) }
-
-    it "calls save on the etsy pattern" do
-      expect(etsy_content).to receive(:save)
-      etsy_decorator.save
+  describe "#decorate" do
+    before(:each) do
+      etsy_content.listing_id = 218515643 
+      etsy_decorator.decorate
     end
 
-    it "updates the image url of a new etsy content" do
-      old_url = etsy_content.image_url
-      etsy_decorator.save
-      expect(etsy_content.image_url).to_not eql(old_url)
+    context "when the etsy content is new" do
+      it "updates the etsy content's image_url" do
+        expect(etsy_content.image_url).to_not be_nil
+      end
+    end
+
+    context "when the etsy content is saved and unchanged" do
+      it "does not change the image url" do
+        old_url = etsy_content.image_url
+        etsy_content.save
+        etsy_decorator.decorate
+        expect(etsy_content.image_url).to eq(old_url)
+      end
     end
   end
 end

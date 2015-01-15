@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: :json} do
-    resources :patterns, only: [:create, :show, :update, :destroy, :index]
+    resources :patterns, only: [:show, :destroy, :index]
     resources :pattern_files, only: [:create, :show, :update, :destroy, :index]
     resources :download_codes, only: [:create, :show, :update, :destroy, :index] do
       get 'search', on: :collection
     end
+    resources :etsy_patterns, only: [:create, :update]
   end
 end
