@@ -34,9 +34,9 @@ angular.module('Utils', [])
 
     factory.prototype.url = function() {
       if (this.id) {
-        return factory.url() + id;
+        return url + id;
       } else {
-        return factory.url();
+        return url;
       }
     }
 
