@@ -12,8 +12,11 @@ angular.module('Utils', [])
       return url;
     }
 
-    factory.getAll = function() {
-      return $http.get(this.url()).then(function(response) {
+    factory.getAll = function(query) {
+      var params = query ? {query: query} : {};
+      return $http.get(this.url(), {
+        params: params
+      }).then(function(response) {
         return _.map(response.data, function(data) {
           return new factory(data);
         })

@@ -8,7 +8,13 @@
   </select>
   <button type="submit">Generate code</button>
   </form>
-
+  <tabset ng-controller="DownloadTabCtrl">
+    <tab ng-repeat="tab in tabs" 
+        heading="{{tab.title}}" 
+        active="tab.active"
+        disabled="tab.disabled">
+    </tab>
+  </tabset>
 <table class="table table-striped">
   <thead>
     <tr>

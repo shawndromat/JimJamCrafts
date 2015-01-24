@@ -2,7 +2,11 @@ class Api::DownloadCodesController < ApplicationController
   before_action :require_admin, except: [:show, :search]
 
   def index
-    @download_codes = DownloadCode.includes(:pattern).all
+    if params[:query]
+      @download_codes = DownloadCode.where("status = ?", params[:query].upcase)
+    else
+      @download_codes = DownloadCode.includes(:pattern).all
+    end
   end
 
   def create

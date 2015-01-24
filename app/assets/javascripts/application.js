@@ -15,6 +15,8 @@
 //= require lodash
 //= require angular
 //= require angular-route
+//= require ui-bootstrap-custom-0.12.0.min
+//= require ui-bootstrap-custom-tpls-0.12.0.min
 //= require root/main
 //= require admin/main
 //= require_tree ./root

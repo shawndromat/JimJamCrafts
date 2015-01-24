@@ -10,16 +10,17 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
     }
     
   }])
-  .controller('DownloadAdminCtrl', ['$scope', 'DownloadCode', 'Pattern', function($scope, DownloadCode, Pattern) {
+  .controller('DownloadAdminCtrl', ['$scope', '$location', 'DownloadCode', 'Pattern', function($scope, $location, DownloadCode, Pattern) {
     $scope.patterns = [];
     $scope.downloadCodes = [];
     $scope.downloadCode = new DownloadCode();
+    $scope.query = $location.search().query || 'pending';
 
     Pattern.getAll().then(function(patterns) {
       $scope.patterns = $scope.patterns.concat(patterns);
     });
 
-    DownloadCode.getAll().then(function(codes) {
+    DownloadCode.getAll($scope.query).then(function(codes) {
       $scope.downloadCodes = $scope.downloadCodes.concat(codes);
     });
 
@@ -59,5 +60,20 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
       filepicker.exportFile(url, {mimetype:'application/pdf'},
         function(Blob){}); 
     }
+
+  }])
+
+  .controller('DownloadTabCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
+
+    // $scope.tabs = ["PENDING", "SENT", "DISABLED"].map(function(status) {
+    //   return {
+    //     title: status.slice(0, 1) + status.slice(1).toLowerCase(),
+    //     filter: status,
+    //     content: status
+    //   };
+    // });
+    $scope.tabs = [{title: "hi", content: "HI"}]
+
+    $scope.tabs[0].active = true;
 
   }])

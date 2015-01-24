@@ -7,13 +7,21 @@ class DownloadCode < ActiveRecord::Base
 
   belongs_to :pattern
 
-  default_scope { order(:created_at) }
+  default_scope { order("download_codes.created_at DESC") }
 
   CHARS_TO_SUB = {
     /I/ => "i",
     /l/ => "L",
     /O/ => "0"
   }
+
+  def self.pending
+    self.where("status = 'PENDING'")
+  end
+
+  def self.sent
+    self.where("status = 'SENT'")
+  end
 
   def self.unique_code
     code = nil
