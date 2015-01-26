@@ -14,4 +14,3 @@ It is a Rails app with two Angular apps on the front end, one public and one adm
 * [Use of the Etsy API to find image urls](./app/models/pattern.rb) for listings
 * Filepicker for uploading and downloading the pdf pattern files
 * __In progress:__ Content polymorphism in the Rails Pattern class to allow for both Etsy API-generated and manually generated content
-* Use of the following design patterns:decorators,presenters
