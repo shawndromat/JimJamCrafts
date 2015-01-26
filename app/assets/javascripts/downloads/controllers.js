@@ -12,8 +12,10 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
   }])
   .controller('DownloadAdminCtrl', ['$scope', '$location', 'DownloadCode', 'Pattern', function($scope, $location, DownloadCode, Pattern) {
     $scope.patterns = [];
-    $scope.downloadCodes = [];
-    $scope.downloadCode = new DownloadCode();
+    $scope.codes = {
+      all: [],
+      newCode: new DownloadCode()
+    }
     $scope.query = $location.search().query || 'pending';
 
     Pattern.getAll().then(function(patterns) {
@@ -21,21 +23,21 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
     });
 
     DownloadCode.getAll($scope.query).then(function(codes) {
-      $scope.downloadCodes = $scope.downloadCodes.concat(codes);
+      $scope.codes.all = $scope.codes.all.concat(codes);
     });
 
 
     $scope.generateCode = function() {
-      var code = $scope.downloadCode;
+      var code = $scope.codes.newCode;
       code.pattern = _.find($scope.patterns, function(patt) {
         return patt.id === Number(code.pattern_id);
       });
 
-      $scope.downloadCode.save().then(function() {
-        $scope.downloadCodes.push(code);
+      $scope.codes.newCode.save().then(function() {
+        $scope.codes.all.push(code);
       })
 
-      $scope.downloadCode = new DownloadCode();
+      $scope.codes.newCode = new DownloadCode();
     }
     
   }])
@@ -65,15 +67,19 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
 
   .controller('DownloadTabCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
 
-    // $scope.tabs = ["PENDING", "SENT", "DISABLED"].map(function(status) {
-    //   return {
-    //     title: status.slice(0, 1) + status.slice(1).toLowerCase(),
-    //     filter: status,
-    //     content: status
-    //   };
-    // });
-    $scope.tabs = [{title: "hi", content: "HI"}]
+    $scope.tabs = ["PENDING", "SENT", "DISABLED"].map(function(status) {
+      return {
+        title: status.slice(0, 1) + status.slice(1).toLowerCase(),
+        filter: status,
+        content: status
+      };
+    });
 
     $scope.tabs[0].active = true;
 
+    $scope.filterDownloads = function(filter) {
+      DownloadCode.getAll(filter).then(function(resp) {
+          $scope.codes.all = resp;
+      })
+    }
   }])

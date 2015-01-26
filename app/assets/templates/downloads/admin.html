@@ -1,20 +1,26 @@
 <form ng-submit="generateCode()">
   <label for="order_number">Order Number</label>
-  <input type="text" id="order_number" ng-model="downloadCode.order_number"/>
+  <input type="text" id="order_number" ng-model="codes.newCode.order_number"/>
   <label for="pattern_id">Pattern</label>
-  <select id="pattern_id" ng-model="downloadCode.pattern_id">
+  <select id="pattern_id" ng-model="codes.newCode.pattern_id">
     <option value="{{pattern.id}}" ng-repeat="pattern in patterns">{{pattern.name}}</option>
-    <input type="hidden" ng-model="downloadCode.pattern" value="pattern" />
+    <input type="hidden" ng-model="codes.newCode.pattern" value="pattern" />
   </select>
   <button type="submit">Generate code</button>
   </form>
-  <tabset ng-controller="DownloadTabCtrl">
-    <tab ng-repeat="tab in tabs" 
-        heading="{{tab.title}}" 
-        active="tab.active"
-        disabled="tab.disabled">
-    </tab>
-  </tabset>
+  <div ng-controller="DownloadTabCtrl">
+    <tabset>
+      <tab ng-repeat="tab in tabs" 
+          heading="{{tab.title}}" 
+          active="tab.active"
+          select="filterDownloads(tab.filter)"
+          disabled="tab.disabled">
+      </tab>
+    </tabset>
+  </div>
+  <form>
+    <input type="text" ng-model="searchTerm"/>
+  </form>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -25,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="download in downloadCodes">
+    <tr ng-repeat="download in codes.all | filter:searchTerm">
       <td>{{download.order_number}}</td>
       <td>{{download.status}}</td>
       <td>{{download.pattern.name}}</td>
