@@ -31,11 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="download in codes.all | filter:searchTerm">
-      <td>{{download.order_number}}</td>
-      <td>{{download.status}}</td>
-      <td>{{download.pattern.name}}</td>
-      <td>{{download.code}}</td>
+    <tr ng-repeat="download in codes.all | filter:searchTerm" download="download" code-table-item>
     </tr>
   </tbody>
 </table>

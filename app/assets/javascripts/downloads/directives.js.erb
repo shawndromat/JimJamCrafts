@@ -8,3 +8,12 @@ angular.module('Downloads.directives', [])
       templateUrl: "<%= asset_path('downloads/form.html') %>"
     }
   })
+  
+  .directive('codeTableItem', function() {
+    return {
+      controller: 'DownloadItemCtrl',
+      restrict: 'A',
+      scope: { download: '=' },
+      templateUrl: "<%= asset_path('downloads/table_item.html') %>"
+    }
+  })

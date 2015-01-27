@@ -1,4 +1,4 @@
-angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
+angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 'Downloads.directives'])
   .controller('DownloadCodeFormCtrl', ['$scope', '$attrs', 'DownloadCode', function($scope, $attrs, DownloadCode) {
     $scope.downloadCode = new DownloadCode({
       pattern_id: $scope.pattern.id
@@ -10,7 +10,7 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
     }
     
   }])
-  .controller('DownloadAdminCtrl', ['$scope', '$location', 'DownloadCode', 'Pattern', function($scope, $location, DownloadCode, Pattern) {
+  .controller('DownloadAdminCtrl', ['$scope', '$location', 'DownloadCode', 'Pattern',  function($scope, $location, DownloadCode, Pattern) {
     $scope.patterns = [];
     $scope.codes = {
       all: [],
@@ -39,7 +39,7 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
 
       $scope.codes.newCode = new DownloadCode();
     }
-    
+
   }])
 
   .controller('DownloadHomeCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
@@ -67,6 +67,7 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
 
   .controller('DownloadTabCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
 
+    console.log($scope)
     $scope.tabs = ["PENDING", "SENT", "DISABLED"].map(function(status) {
       return {
         title: status.slice(0, 1) + status.slice(1).toLowerCase(),
@@ -82,4 +83,15 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models'])
           $scope.codes.all = resp;
       })
     }
+  }])
+
+  .controller('DownloadItemCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
+
+    $scope.updateOrderNumber = function() {
+      $scope.download.order_number = $scope.orderNumber;
+      $scope.download.save().then(function() {
+        debugger
+      });
+    }
+
   }])
