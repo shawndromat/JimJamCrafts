@@ -4,6 +4,7 @@ class DownloadCode < ActiveRecord::Base
   validates :status, inclusion: %w(PENDING SENT DISABLED)
   
   after_initialize :generate_code
+  before_save :check_status
 
   belongs_to :pattern
 
@@ -40,5 +41,9 @@ class DownloadCode < ActiveRecord::Base
   private
   def generate_code
     self.code ||= self.class.unique_code
+  end
+
+  def check_status
+    self.status = "SENT" if self.order_number
   end
 end
