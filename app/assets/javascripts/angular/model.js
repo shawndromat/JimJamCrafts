@@ -5,7 +5,11 @@ angular.module('Utils', [])
     var url = window.location.origin + options.url;
     factory = function (attrs) {
       attrs = attrs || {};
-      _.extend(this, this.parse(attrs));
+      attrs = this.parse(attrs);
+
+      this.attributes = {};
+      this.set(attrs);
+      // _.extend(this, this.parse(attrs));
     }
 
     factory.url = function() {
@@ -29,15 +33,24 @@ angular.module('Utils', [])
         return new factory(response.data);
       });
     }
-    
 
     factory.prototype.parse = function(response) {
       return response;
     }
 
+    factory.prototype.get = function(attr) {
+      return this.attributes[attr];
+    };
+
+    factory.prototype.set = function(attrs) {
+      for (var attr in attrs) {
+        this.attributes[attr] = attrs[attr];
+      }
+    };
+
     factory.prototype.url = function() {
-      if (this.id) {
-        return url + id;
+      if (this.get('id')) {
+        return url + "/" + this.get('id');
       } else {
         return url;
       }
@@ -45,14 +58,15 @@ angular.module('Utils', [])
 
     factory.prototype.save = function() {
       var promise;
-      if (this.id) {
-        promise = $http.patch(this.url(), this);
+      if (this.get('id')) {
+        promise = $http.patch(this.url(), this.attributes);
       } else {
-        promise = $http.post(this.url(), this);
+        promise = $http.post(this.url(), this.attributes);
       }
 
       return promise.then(function(response) {
-        _.extend(this, response.data)
+        // _.extend(this.attributes, response.data)
+        this.set(response.data);
       }.bind(this))
     }
 

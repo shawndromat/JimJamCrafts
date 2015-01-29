@@ -20,7 +20,7 @@ angular.module('Patterns.models', ['Utils', 'PatternFiles.models'])
     if (this.listing_id) {
       return window.location.origin + "/api/etsy_patterns/";
     } else {
-      return window.location.origina + "/api/indie_patterns/";
+      return window.location.origin + "/api/indie_patterns/";
     }
   }
 
