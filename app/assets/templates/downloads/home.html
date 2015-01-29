@@ -23,7 +23,7 @@
     <img class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4" src="{{pattern.get('image_url')}}"/>
     <div class="col-xs-12 col-sm-8">
       <h2>{{pattern.get('name')}}</h2>
-      <a ng-show="pattern.get('listing_id')" href="{{pattern.get('etsy_url')}}" target="_blank">View listing</a>
+      <a ng-show="pattern.get('listing_id')" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
       <a ng-show="downloadCode.get('order_number')" href="http://www.etsy.com/your/purchases/{{downloadCode.get('order_number')}}" target="_blank">View receipt</a>
     </div>
   </div>
