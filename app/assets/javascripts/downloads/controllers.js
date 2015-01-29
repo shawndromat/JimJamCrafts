@@ -8,14 +8,12 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
       $scope.downloadCode.save().then(function(code) {
       })
     }
-    
   }])
   .controller('DownloadAdminCtrl', ['$scope', '$location', 'DownloadCode', 'Pattern',  function($scope, $location, DownloadCode, Pattern) {
     $scope.patterns = [];
-    $scope.codes = {
-      all: [],
-      newCode: new DownloadCode()
-    }
+    $scope.downloadCode = new DownloadCode();
+    $scope.downloadCodes = [];
+
     $scope.query = $location.search().query || 'pending';
 
     Pattern.getAll().then(function(patterns) {
@@ -23,21 +21,21 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
     });
 
     DownloadCode.getAll($scope.query).then(function(codes) {
-      $scope.codes.all = $scope.codes.all.concat(codes);
+      $scope.downloadCodes = $scope.downloadCodes.concat(codes);
     });
 
 
     $scope.generateCode = function() {
-      var code = $scope.codes.newCode;
+      var code = $scope.downloadCode;
       code.pattern = _.find($scope.patterns, function(patt) {
         return patt.id === Number(code.pattern_id);
       });
 
-      $scope.codes.newCode.save().then(function() {
-        $scope.codes.all.push(code);
+      $scope.downloadCode.save().then(function() {
+        $scope.downloadCodes.push(code);
       })
 
-      $scope.codes.newCode = new DownloadCode();
+      $scope.downloadCode = new DownloadCode();
     }
 
   }])
@@ -67,7 +65,6 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
 
   .controller('DownloadTabCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
 
-    console.log($scope)
     $scope.tabs = ["PENDING", "SENT", "DISABLED"].map(function(status) {
       return {
         title: status.slice(0, 1) + status.slice(1).toLowerCase(),
@@ -80,7 +77,7 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
 
     $scope.filterDownloads = function(filter) {
       DownloadCode.getAll(filter).then(function(resp) {
-          $scope.codes.all = resp;
+          $scope.downloadCodes = resp;
       })
     }
   }])
@@ -88,9 +85,8 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
   .controller('DownloadItemCtrl', ['$scope', 'DownloadCode', function ($scope, DownloadCode) {
 
     $scope.updateOrderNumber = function() {
-      $scope.download.order_number = $scope.orderNumber;
+      $scope.download.set({order_number: $scope.orderNumber});
       $scope.download.save().then(function() {
-        debugger
       });
     }
 

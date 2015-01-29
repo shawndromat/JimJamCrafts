@@ -51,6 +51,6 @@ class Api::DownloadCodesController < ApplicationController
   end
 
   def code_params
-    params.require(:download_code).permit(:pattern_id, :order_number)
+    params.require(:download_code).permit(:id, :pattern_id, :order_number, :status, :code)
   end
 end

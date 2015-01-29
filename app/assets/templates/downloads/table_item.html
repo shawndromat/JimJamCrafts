@@ -1,7 +1,7 @@
-  <td ng-show="download.order_number">{{download.order_number}}</td>
-  <td ng-hide="download.order_number">
+  <td ng-show="download.get('order_number')">{{download.get('order_number')}}</td>
+  <td ng-hide="download.get('order_number')">
     <input type="text" ng-model="orderNumber" ng-blur="updateOrderNumber()"/>
   </td>
-  <td>{{download.status}}</td>
-  <td>{{download.pattern.name}}</td>
-  <td>{{download.code}}</td>
+  <td>{{download.get('status')}}</td>
+  <td>{{download.pattern.attributes.name}}</td>
+  <td>{{download.attributes.code}}</td>

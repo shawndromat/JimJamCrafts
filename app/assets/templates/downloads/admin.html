@@ -1,10 +1,10 @@
 <form ng-submit="generateCode()">
   <label for="order_number">Order Number</label>
-  <input type="text" id="order_number" ng-model="codes.newCode.order_number"/>
+  <input type="text" id="order_number" ng-model="downloadCode.attributes.order_number"/>
   <label for="pattern_id">Pattern</label>
-  <select id="pattern_id" ng-model="codes.newCode.pattern_id">
-    <option value="{{pattern.id}}" ng-repeat="pattern in patterns">{{pattern.name}}</option>
-    <input type="hidden" ng-model="codes.newCode.pattern" value="pattern" />
+  <select id="pattern_id" ng-model="downloadCode.attributes.pattern_id">
+    <option value="{{pattern.get('id')}}" ng-repeat="pattern in patterns">{{pattern.get('name')}}</option>
+    <input type="hidden" ng-model="downloadCode.pattern" value="pattern" />
   </select>
   <button type="submit">Generate code</button>
   </form>
@@ -31,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="download in codes.all | filter:searchTerm" download="download" code-table-item>
+    <tr ng-repeat="download in downloadCodes | filter:searchTerm" download="download" code-table-item>
     </tr>
   </tbody>
 </table>

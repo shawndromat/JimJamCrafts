@@ -17,5 +17,6 @@ Rails.application.routes.draw do
       get 'search', on: :collection
     end
     resources :etsy_patterns, only: [:create, :update]
+    resources :indie_patterns, only: [:create, :update]
   end
 end
