@@ -17,7 +17,7 @@ angular.module('Patterns.models', ['Utils', 'PatternFiles.models'])
   }
 
   Pattern.prototype.path = function() {
-    if (this.listing_id) {
+    if (this.get("listing_id")) {
       return window.location.origin + "/api/etsy_patterns/";
     } else {
       return window.location.origin + "/api/indie_patterns/";

@@ -1,7 +1,7 @@
 <form ng-submit="submitFile()">
   <label>File name</label>
-  <input type="text" ng-model="file.name"/>
-  <p class="filename" ng-show="file.filename">{{file.filename}}</p>
+  <input type="text" ng-model="file.attributes.name"/>
+  <p class="filename" ng-show="file.get('filename')">{{file.get('filename')}}</p>
   <div class="btn btn-default" ng-click="pickFile()">Pick a file</div>
   <input type="submit" class="btn btn-primary" value="Save"/>
 </form>
