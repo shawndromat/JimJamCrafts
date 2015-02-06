@@ -13,6 +13,7 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
     $scope.patterns = [];
     $scope.downloadCode = new DownloadCode();
     $scope.downloadCodes = [];
+    $scope.number = 1;
 
     $scope.query = $location.search().query || 'pending';
 
