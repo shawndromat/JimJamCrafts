@@ -17,3 +17,12 @@ angular.module('Downloads.directives', [])
       templateUrl: "<%= asset_path('downloads/table_item.html') %>"
     }
   })
+
+  .directive('downloadTabs', function() {
+    return {
+      controller: 'DownloadTabCtrl',
+      restrict: 'A',
+      scope: { downloadCodes: '=' },
+      templateUrl: "<%= asset_path('downloads/tabs.html') %>"
+    }
+  })

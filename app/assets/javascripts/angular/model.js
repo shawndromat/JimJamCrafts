@@ -9,7 +9,6 @@ angular.module('Utils', [])
 
       this.attributes = {};
       this.set(attrs);
-      // _.extend(this, this.parse(attrs));
     }
 
     factory.url = function() {

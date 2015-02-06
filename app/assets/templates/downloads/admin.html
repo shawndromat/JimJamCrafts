@@ -9,16 +9,7 @@
   <input type="number" ng-model="number" />
   <button type="submit">Generate code</button>
   </form>
-  <div ng-controller="DownloadTabCtrl">
-    <tabset>
-      <tab ng-repeat="tab in tabs" 
-          heading="{{tab.title}}" 
-          active="tab.active"
-          select="filterDownloads(tab.filter)"
-          disabled="tab.disabled">
-      </tab>
-    </tabset>
-  </div>
+  <div download-codes="downloadCodes" download-tabs></div>
   <form>
     <input type="text" ng-model="searchTerm"/>
   </form>
