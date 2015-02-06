@@ -25,17 +25,22 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
     });
 
 
-    $scope.generateCode = function() {
-      var code = $scope.downloadCode;
-      code.pattern = _.find($scope.patterns, function(patt) {
-        return patt.id === Number(code.pattern_id);
-      });
+    $scope.generateCode = function(n) {
+      var code;
 
-      $scope.downloadCode.save().then(function() {
-        $scope.downloadCodes.push(code);
-      })
+      for(var i = 0; i < n; i++) {
+        code = new DownloadCode($scope.downloadCode.attributes);
+        code.pattern = _.find($scope.patterns, function(patt) {
+          return patt.id === Number(code.pattern_id);
+        });
 
-      $scope.downloadCode = new DownloadCode();
+        code.save().then($scope.pushCode(code))
+      }
+        $scope.downloadCode = new DownloadCode();
+    }
+
+    $scope.pushCode = function(code) {
+      $scope.downloadCodes.push(code);
     }
 
   }])
