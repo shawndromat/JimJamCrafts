@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get "login", to: "api/sessions#new"
   end
 
+  get "/", to: "static_pages#root", constraints: { subdomain: "download" }
+
   namespace :api, defaults: {format: :json} do
     resources :patterns, only: [:show, :destroy, :index]
     resources :pattern_files, only: [:create, :show, :update, :destroy, :index]
