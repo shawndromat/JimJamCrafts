@@ -63,7 +63,10 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
     }
 
     $scope.downloadFile = function(url) {
-      filepicker.exportFile(url, {mimetype:'application/pdf'},
+      filepicker.exportFile(url, {
+        mimetype:'application/pdf',
+        service: 'COMPUTER'
+      },
         function(Blob){}); 
     }
 

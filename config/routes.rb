@@ -4,13 +4,12 @@ Rails.application.routes.draw do
     sessions: "api/sessions"} do
     get "login", to: "sessions#new"
   end
-  root "static_pages#root"
+  get "/", to: "static_pages#root", constraints: { subdomain: "download" }
   get "admin", to: "static_pages#admin"
   devise_scope :user do
     get "login", to: "api/sessions#new"
   end
 
-  get "/", to: "static_pages#root", constraints: { subdomain: "download" }
 
   namespace :api, defaults: {format: :json} do
     resources :patterns, only: [:show, :destroy, :index]
@@ -21,4 +20,6 @@ Rails.application.routes.draw do
     resources :etsy_patterns, only: [:create, :update]
     resources :indie_patterns, only: [:create, :update]
   end
+
+  root "static_pages#root"
 end
