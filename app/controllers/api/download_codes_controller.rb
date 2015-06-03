@@ -31,7 +31,7 @@ class Api::DownloadCodesController < ApplicationController
   end
 
   def search
-    @download_code = DownloadCode.find_by(code: params[:code])
+    @download_code = DownloadCode.find_by(code: params[:code].downcase)
     if @download_code
       render @download_code
     else
