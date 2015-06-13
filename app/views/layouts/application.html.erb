@@ -6,21 +6,32 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application' %>
   <%= filepicker_js_include_tag %>
   <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
+  <%= favicon_link_tag 'favicon.png' %>
 </head>
 <body>
+  <nav class="navbar navbar-default navbar-top">
+    <ul class="nav navbar-nav">
+      <li><a href="http://www.jimjamcrafts.com/blog">Blog</a></li>
+      <li><a href="http://www.jimjamcrafts.com/shop">Shop</a></li>
+      <li><a href="#" class="active">Download</a></li>
+      <li><a href="http://www.jimjamcrafts.com/about">About</a></li>
+      <li><a href="http://www.jimjamcrafts.com/contact">Contact</a></li>
+    </ul>
+  </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <div class="container content">
+  <img src="<%= image_url("stitch logo.png") %>" class="logo" />
   <%= yield %>
 </div>
 <footer>
   <div class="container">
     <p>
-      Questions, comments, concerns? Email <a href="mailto:jimjamcrafts@gmail.com">jimjamcrafts@gmail.com</a>
+    Questions, comments, concerns? Email <a href="mailto:shawna@jimjamcrafts.com">shawna@jimjamcrafts.com</a>
     </p>
 </footer>
   </div>

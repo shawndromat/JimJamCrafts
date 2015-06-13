@@ -1,26 +1,23 @@
-<h1 id="title">Jim Jam Crafts</h1>
+<h3 class="subtitle">funny, colorful cross stitch</h3>
 <form ng-submit="search()" class="mainform clearfix">
   <!-- <label for="download_code_code">Enter your download code:</label> -->
   <div class="form-group clearfix">
     <input class="large-input col-sm-7 col-xs-8 col-xs-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
-    <button type="submit" class="col-sm-1 col-sm-offset-0 col-xs-8 col-xs-offset-2 large-submit">Go</button> 
+    <button type="submit" class="col-sm-1 col-sm-offset-0 col-xs-8 col-xs-offset-2 large-submit">Go</button>
   </div>
 <div class="form-group">
   <div class="alert alert-danger col-xs-8 col-xs-offset-2" role="alert" ng-show="errorMessage">
     <p><strong>Oops!</strong>I'm having a hard time recognizing that code. Please try again.</p>
-    <p>Here are some code reading hints:</p>
-    <ul>
-      <li>All dashes and underscores should be included</li>
-      <li>There are no capital "O"s, just zeroes</li>
-      <li>There are no capital "i"s and no lowercase "L"s, only ones</li>
-    </ul>
   </div>
 </div>
 </form>
 
 <div ng-show="pattern" class="col-sm-8 col-sm-offset-2 pattern-show">
   <div class="row pattern-header">
-    <img class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4" src="{{pattern.get('image_url')}}"/>
+    <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4 img-wrapper">
+      <img src="{{pattern.get('image_url')}}"/>
+    </div>
+
     <div class="col-xs-12 col-sm-8">
       <h2>{{pattern.get('name')}}</h2>
       <a ng-show="pattern.get('listing_id')" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
@@ -30,7 +27,7 @@
 
   <ul class="filelist list-group">
     <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files" class="list-group-item row">
-        <h4 class="col-md-5">{{file.get('name')}}</h4> 
+        <h4 class="col-md-5">{{file.get('name')}}</h4>
         <div class="col-md-7 file-group">
           <div class="row">
             <p class="filename col-xs-12 col-sm-8">{{file.get('filename')}}</p>
@@ -43,4 +40,3 @@
     </li>
   </ul>
 </div>
-

@@ -14,20 +14,59 @@
  *= require bootstrap
  *= require_self
  */
+$teal: #72C7A7;
+$light-teal: #A2E1C9;
+$dark-teal: #2D916B;
+
 * {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  color: #444;
   // border: thin solid black;
+}
+
+a {
+  color: $dark-teal;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+nav.navbar.navbar-default{
+  border: none;
+  border-top: 8px solid $teal;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: $teal;
+  text-transform: lowercase;
+  background: none;
+}
+
+.navbar-nav.nav{
+  display: block;
+  float: none;
+  width: 630px;
+  margin: 0 auto;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: $teal;
+  padding: 25px 32px 0;
+}
+
+.navbar-default .navbar-nav > li > a.active {
+  text-decoration: underline;
+}
+
+.logo {
+  width: 500px;
+  max-width: 35%;
 }
 
 .clearfix:after {
   content: "";
   display: block;
   clear: both;
-}
-
-h1, h2, h3 {
-  font-family: 'Lato', sans-serif;
-  // text-transform: lowercase;
 }
 
 // .full-image {
@@ -38,9 +77,9 @@ html, body{
 }
 
 body {
-  background-image: image-url("flossy_flossy.jpg");
-  background-size: cover;
-  background-attachment: fixed;
+  // background-image: image-url("hoops.jpg");
+  // background-size: cover;
+  // background-attachment: fixed;
   min-height: 100%;
   padding: 0;
   margin: 0;
@@ -49,6 +88,7 @@ body {
 
 .container {
   // background-color: rgba(255,255,255,.25);
+  text-align: center;
 }
 
 #title {
@@ -63,6 +103,10 @@ body {
   -webkit-transition: margin-top .75s ease-in;
 }
 
+.subtitle {
+  color: #444;
+}
+
 #title.results {
   margin-top: 20px;
 }
@@ -72,18 +116,36 @@ form {
 }
 
 .mainform {
-  margin-bottom: 50px;
+  margin: 50px 0;
 }
 
 .large-input {
   border: none;
-  border-bottom: 3px solid #666;
-  height: 50px;
+  border-bottom: 3px solid $dark-teal;
   opacity: .80;
-  background-color: #ddd;
-  font-size: 2em;
+  color: $dark-teal;
+  background-color: $light-teal;
+  font-weight: normal;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
+  font-size: 18px;
+  padding: 30px 40px;
+}
+
+.large-input::-webkit-input-placeholder {
+  color: $dark-teal;
+}
+
+.large-input:-moz-placeholder {
+  color: $dark-teal;
+}
+
+.large-input::-moz-placeholder {
+  color: $dark-teal;
+}
+
+.large-input:-ms-input-placeholder {
+  color: $dark-teal;
 }
 
 
@@ -93,25 +155,34 @@ form {
 }
 
 .large-submit {
-  background-color: #AAA;
+  background-color: $teal;
+  color: #fff;
+  letter-spacing: 1px;
   border: none;
-  height: 50px;
+  padding: 30px 30px 33px;
+  font-size: 18px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
 .pattern-show {
-  background-color: rgba(255,255,255,.75);
+  background-color: $light-teal;
+  text-align: left;
+  border-radius: 4px;
 }
 
 .pattern-header {
   text-align: center;
-  padding: 40px;
+  padding: 40px 15px 5px;
   margin-bottom: 20px;
 
   a {
     display: block;
     padding: 5px;
+  }
+
+  img {
+    width: 100%;
   }
 }
 
@@ -171,6 +242,11 @@ footer {
 footer p {
   padding-top: 20px;
   float: right;
+  font-weight: light;
+}
+
+footer a {
+  color: $dark-teal;
 }
 
 .container.content {
