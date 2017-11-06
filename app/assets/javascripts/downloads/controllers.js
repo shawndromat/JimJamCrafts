@@ -62,6 +62,11 @@ angular.module('Downloads.controllers', ['Downloads.models', 'Patterns.models', 
       })
     }
 
+    $scope.freeBmo = function() {
+      $scope.code = "freebmo"
+      $scope.search()
+    }
+
     $scope.downloadFile = function(url) {
       filepicker.exportFile(url, {
         mimetype:'application/pdf',
