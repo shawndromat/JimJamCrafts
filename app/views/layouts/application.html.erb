@@ -15,17 +15,15 @@
 <body>
   <nav class="navbar navbar-default navbar-top">
     <ul class="nav navbar-nav">
-      <li><a href="http://www.jimjamcrafts.com/blog">Blog</a></li>
-      <li><a href="http://www.jimjamcrafts.com/shop">Shop</a></li>
+      <li><a href="http://jimjamcrafts.etsy.com">Shop</a></li>
       <li><a href="#" class="active">Download</a></li>
-      <li><a href="http://www.jimjamcrafts.com/about">About</a></li>
-      <li><a href="http://www.jimjamcrafts.com/contact">Contact</a></li>
+      <li><a href="https://www.etsy.com/shop/jimjamcrafts#about">About</a></li>
     </ul>
   </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 <div class="container content">
-  <img src="<%= image_url("stitch logo.png") %>" class="logo" />
+  <img src="<%= image_url("jim jam crafts logo large.png") %>" class="logo" />
   <%= yield %>
 </div>
 <footer>
@@ -33,8 +31,8 @@
     <p>
     Questions, comments, concerns? Email <a href="mailto:shawna@jimjamcrafts.com">shawna@jimjamcrafts.com</a>
     </p>
-</footer>
   </div>
+</footer>
 <script>
   filepicker.setKey("<%= ENV["FILEPICKER_API_KEY"] %>");
   </script>

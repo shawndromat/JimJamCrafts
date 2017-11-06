@@ -1,67 +1,36 @@
 <h3 class="subtitle">funny, colorful cross stitch</h3>
-<form ng-submit="search()" class="mainform clearfix">
-  <!-- <label for="download_code_code">Enter your download code:</label> -->
-  <div class="form-group clearfix">
-    <input class="large-input col-sm-7 col-xs-8 col-xs-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
-    <button type="submit" class="col-sm-1 col-sm-offset-0 col-xs-8 col-xs-offset-2 large-submit">Go</button>
+<div class="mainform">
+  <div class="row">
+    <button class="col-xs-6 col-xs-offset-3 large-submit" ng-click="search(freebmo)">Click here for free BMO pattern</button>
   </div>
-<div class="form-group">
-  <div class="alert alert-danger col-xs-8 col-xs-offset-2" role="alert" ng-show="errorMessage">
-    <p><strong>Oops!</strong>I'm having a hard time recognizing that code. Please try again.</p>
-  </div>
-</div>
-</form>
+  <h3>or</h3>
+  <form ng-submit="search()" class="clearfix">
+    <div class="form-group clearfix">
+      <input class="large-input col-sm-7 col-xs-8 col-xs-offset-2" type="text" id="download_code_code" ng-model="code" placeholder="Enter your download code"/>
+      <button type="submit" class="col-sm-1 col-sm-offset-0 col-xs-8 col-xs-offset-2 large-submit input-group">Go</button>
+    </div>
+    <div class="form-group">
+      <div class="alert alert-danger col-xs-8 col-xs-offset-2" role="alert" ng-show="errorMessage">
+        <p><strong>Oops!</strong>I'm having a hard time recognizing that code. Please try again.</p>
+      </div>
+    </div>
+  </form>
 
-<table>
-  <thead>
-    <tr>
-      <th>Needle Size</th>
-      <th>Fabric Size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>18</td>
-      <td>6 count</td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>8 count</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>11 count</td>
-    </tr>
-    <tr>
-      <td>24</td>
-      <td>14 count</td>
-    </tr>
-    <tr>
-      <td>26</td>
-      <td>16 count</td>
-    </tr>
-    <tr>
-      <td>28</td>
-      <td>18 count</td>
-    </tr>
-  </tbody>
-</table>
+  <div ng-show="pattern" class="col-sm-8 col-sm-offset-2 pattern-show">
+    <div class="row pattern-header">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4 img-wrapper">
+        <img src="{{pattern.get('image_url')}}"/>
+      </div>
 
-<div ng-show="pattern" class="col-sm-8 col-sm-offset-2 pattern-show">
-  <div class="row pattern-header">
-    <div class="col-xs-8 col-xs-offset-2 col-sm-offset-0 col-sm-4 img-wrapper">
-      <img src="{{pattern.get('image_url')}}"/>
+      <div class="col-xs-12 col-sm-8">
+        <h2>{{pattern.get('name')}}</h2>
+        <a ng-show="pattern.get('listing_id')" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
+        <a ng-show="downloadCode.get('order_number')" href="http://www.etsy.com/your/purchases/{{downloadCode.get('order_number')}}" target="_blank">View receipt</a>
+      </div>
     </div>
 
-    <div class="col-xs-12 col-sm-8">
-      <h2>{{pattern.get('name')}}</h2>
-      <a ng-show="pattern.get('listing_id')" href="{{pattern.etsy_url}}" target="_blank">View listing</a>
-      <a ng-show="downloadCode.get('order_number')" href="http://www.etsy.com/your/purchases/{{downloadCode.get('order_number')}}" target="_blank">View receipt</a>
-    </div>
-  </div>
-
-  <ul class="filelist list-group">
-    <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files" class="list-group-item row">
+    <ul class="filelist list-group">
+      <li ng-show="pattern.pattern_files" ng-repeat="file in pattern.pattern_files" class="list-group-item row">
         <h4 class="col-md-5">{{file.get('name')}}</h4>
         <div class="col-md-7 file-group">
           <div class="row">
@@ -72,6 +41,7 @@
             </button>
           </div>
         </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </div>
