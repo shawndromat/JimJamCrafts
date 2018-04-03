@@ -7,7 +7,7 @@ store](http://jimjamcrafts.etsy.com).
 
 It is a Rails app with two Angular apps on the front end, one public and one admin.
 
-###Features include:
+### Features include:
 
 * A custom [base Model class in Angular](./app/assets/javascripts/angular/model.js) to wrap $http
 * Modularized Angular factories, directives and controllers for shared use across the two front-end apps
